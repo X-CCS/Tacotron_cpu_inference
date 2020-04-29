@@ -1,9 +1,9 @@
 # Tacotron_cpu_inference
 Convert GPU inference code to CPU inference, basically remove amp and cuda() related parts, it is based on: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
 
-1. Assume you already have downloaded and preprocessed the dataset as quick start shows 
+1. Assume you already have downloaded and preprocessed the dataset as quick start. 
 
-2. Tacotron2 and WaveGlow checkpoints for inference can be download from NGC, and place in the current directory:
+2. Tacotron2 and WaveGlow checkpoints for inference can be downloaded from NGC, and place in the current directory:
 
  https://ngc.nvidia.com/catalog/models/nvidia:tacotron2pyt_fp16/files?version=3 
  
@@ -21,4 +21,4 @@ If you get this error: ModuleNotFoundError: No module named 'dllogger'
 
 bash test_infer.sh 
 
-bash run_latency_tests.sh 
+bash run_latency_tests.sh (with different batch size)
