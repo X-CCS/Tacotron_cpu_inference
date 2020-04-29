@@ -1,5 +1,5 @@
 # Tacotron_cpu_inference
-Convert GPU inference code to CPU inference, basically remove amp and cuda() related parts, it is based on: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
+Convert GPU inference code to CPU inference using TorchScript, basically remove amp and cuda() related parts, add TorchScript code in test_infer.py, it is based on: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
 
 1. Assume you already have downloaded and preprocessed the dataset as quick start. 
 
