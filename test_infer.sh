@@ -29,24 +29,8 @@ do
 	    NUM_ITERS="$2"
 	    shift
 	    ;;
-	--test)
-	    TEST_PROGRAM="$2"
-	    shift
-	    ;;
 	--tacotron2)
 	    TACOTRON2_CKPT="$2"
-	    shift
-	    ;;
-	--encoder)
-	    ENCODER_CKPT="$2"
-	    shift
-	    ;;
-	--decoder)
-	    DECODER_CKPT="$2"
-	    shift
-	    ;;
-	--postnet)
-	    POSTNET_CKPT="$2"
 	    shift
 	    ;;
 	--waveglow)
@@ -69,13 +53,8 @@ NVLOG_FILE=nvlog_${LOG_SUFFIX}.json
 TMP_LOGFILE=tmp_log_${LOG_SUFFIX}.log
 LOGFILE=log_${LOG_SUFFIX}.log
 
+TACOTRON2_PARAMS="--tacotron2 $TACOTRON2_CKPT"
 
-if [ "$TEST_PROGRAM" = "trt/test_infer_trt.py" ]
-then
-    TACOTRON2_PARAMS="--encoder $ENCODER_CKPT --decoder $DECODER_CKPT --postnet $POSTNET_CKPT"
-else
-    TACOTRON2_PARAMS="--tacotron2 $TACOTRON2_CKPT"
-fi
 
 set -x
 python $TEST_PROGRAM \
