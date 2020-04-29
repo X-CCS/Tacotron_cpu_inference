@@ -110,7 +110,8 @@ def load_and_setup_model(model_name, parser, checkpoint, forward_is_infer=False)
     model_args, _ = model_parser.parse_known_args()
 
     model_config = models.get_model_config(model_name, model_args)
-    model = models.get_model(model_name, model_config, to_cuda=False,
+#    model = models.get_model(model_name, model_config, to_cuda=False,
+    model = models.get_model(model_name, model_config,
                              forward_is_infer=forward_is_infer)
 
     if checkpoint is not None:
