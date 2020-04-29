@@ -1,7 +1,7 @@
 # Tacotron_cpu_inference
-Convert GPU inference to CPU inference, basically remove amp and cuda() related
+Convert GPU inference code to CPU inference, basically remove amp and cuda() related parts, it is based on: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
 
-1. Assume you already have downloaded and preprocessed the dataset as quick start: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
+1. Assume you already have downloaded and preprocessed the dataset as quick start shows 
 
 2. Tacotron2 and WaveGlow checkpoints for inference can be download from NGC, and place in the current directory:
 
