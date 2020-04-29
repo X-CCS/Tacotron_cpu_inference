@@ -63,4 +63,4 @@ def load_filepaths_and_text(dataset_path, filename, split="|"):
 
 #    if torch.cuda.is_available():
 #        x = x.cuda(non_blocking=True)
-    return torch.autograd.Variable(x)
+#    return torch.autograd.Variable(x)
