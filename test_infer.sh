@@ -82,7 +82,7 @@ python $TEST_PROGRAM \
        $TACOTRON2_PARAMS \
        --waveglow $WAVEGLOW_CKPT \
        --batch-size $BATCH_SIZE \
-       --input-length $INPUT_LENGTH $AMP_RUN \
+       --input-length $INPUT_LENGTH \
        --log-file $NVLOG_FILE \
        --num-iters $NUM_ITERS \
        --wn-channels $WN_CHANNELS \
