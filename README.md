@@ -3,7 +3,8 @@ Convert GPU inference to CPU inference, basically remove amp and cuda() related
 
 1. Assume you already have downloaded and preprocessed the dataset as quick start: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
 
-2. Assume you already have the FP32 checkpoints which could be download from NGC:
+2. Tacotron2 and WaveGlow checkpoints for inference can be download from NGC:
+
  https://ngc.nvidia.com/catalog/models/nvidia:tacotron2pyt_fp16/files?version=3 
  
  https://ngc.nvidia.com/catalog/models/nvidia:waveglow256pyt_fp16/files?version=2
