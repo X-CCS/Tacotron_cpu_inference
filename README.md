@@ -15,7 +15,7 @@ Convert GPU inference code to CPU inference, basically remove amp and cuda() rel
 
 If you get this error: ModuleNotFoundError: No module named 'dllogger'
 
-5. Now you can run inference on CPU: $ python inference.py --tacotron2 tacotron2_1032590_6000_amp --waveglow waveglow_1076430_14000_amp -o output/ -i phrases/phrase.txt
+5. Now you can run inference on CPU: $ python inference.py --tacotron2 tacotron2_1032590_6000_amp --waveglow waveglow_1076430_14000_amp --wn-channels 256 -o output/ -i phrases/phrase.txt
 
 6.You can also run the inference scripts for benchmarking which could take quite a while:
 
