@@ -8,7 +8,7 @@ TACOTRON2_CKPT="tacotron2_1032590_6000_amp"
 WAVEGLOW_CKPT="waveglow_1076430_14000_amp"
 
 TEST_PROGRAM="test_infer.py"
-WN_CHANNELS=512
+WN_CHANNELS=256
 
 while [ -n "$1" ]
 do
