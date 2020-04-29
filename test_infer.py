@@ -71,13 +71,13 @@ def parse_args(parser):
 
 
 #def load_and_setup_model(model_name, parser, checkpoint, amp_run, to_cuda=True):
-def load_and_setup_model(model_name, parser, checkpoint):
+def load_and_setup_model(model_name, parser, checkpoint, forward_is_infer=False):
     model_parser = models.parse_model_args(model_name, parser, add_help=False)
     model_args, _ = model_parser.parse_known_args()
 
     model_config = models.get_model_config(model_name, model_args)
 #    model = models.get_model(model_name, model_config, to_cuda=to_cuda)
-    model = models.get_model(model_name, model_config)
+    model = models.get_model(model_name, model_config, forward_is_infer=forward_is_infer)
 
     if checkpoint is not None:
 #        if to_cuda:
@@ -172,8 +172,10 @@ def main():
 
 #    tacotron2 = load_and_setup_model('Tacotron2', parser, args.tacotron2, args.amp_run)
 #    waveglow = load_and_setup_model('WaveGlow', parser, args.waveglow, args.amp_run)
-    tacotron2 = load_and_setup_model('Tacotron2', parser, args.tacotron2)
+    tacotron2 = load_and_setup_model('Tacotron2', parser, args.tacotron2, forward_is_infer=True)
     waveglow = load_and_setup_model('WaveGlow', parser, args.waveglow)
+
+    jitted_tacotron2 = torch.jit.script(tacotron2)
 
     texts = ["The forms of printed letters should be beautiful, and that their arrangement on the page should be reasonable and a help to the shapeliness of the letters themselves. The forms of printed letters should be beautiful, and that their arrangement on the page should be reasonable and a help to the shapeliness of the letters themselves."]
     texts = [texts[0][:args.input_length]]
@@ -191,8 +193,8 @@ def main():
         with torch.no_grad():
             with MeasureTime(measurements, "latency"):
                 with MeasureTime(measurements, "tacotron2_latency"):
-                    mel, mel_lengths, _ = tacotron2.infer(sequences_padded, input_lengths)
-
+#                    mel, mel_lengths, _ = tacotron2.infer(sequences_padded, input_lengths)
+                     mel, mel_lengths, _ = jitted_tacotron2(sequences_padded, input_lengths)
                 with MeasureTime(measurements, "waveglow_latency"):
                     audios = waveglow.infer(mel, sigma=args.sigma_infer)
 
