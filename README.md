@@ -3,7 +3,7 @@ Convert GPU inference to CPU inference, basically remove amp and cuda() related
 
 1. Assume you already have downloaded and preprocessed the dataset as quick start: https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/SpeechSynthesis/Tacotron2
 
-2. Tacotron2 and WaveGlow checkpoints for inference can be download from NGC:
+2. Tacotron2 and WaveGlow checkpoints for inference can be download from NGC, and place in the current directory:
 
  https://ngc.nvidia.com/catalog/models/nvidia:tacotron2pyt_fp16/files?version=3 
  
@@ -15,4 +15,8 @@ Convert GPU inference to CPU inference, basically remove amp and cuda() related
 
 5. Now you can run inference on CPU: $ python inference.py --tacotron2 tacotron2_1032590_6000_amp --waveglow waveglow_1076430_14000_amp -o output/ -i phrases/phrase.txt
 
-6.You can also run the inference scripts for more extensive testing: test_infer.sh run_latency_tests.sh which could take quite a while
+6.You can also run the inference scripts for more extensive testingwhich could take quite a while:
+
+bash test_infer.sh 
+
+bash run_latency_tests.sh 
